@@ -21,6 +21,50 @@ step5: after that Store the agents wit+h minimum delivery time at each delivery 
 console.log("Zorang Project");
 
 // calculating distance between two location 
+function Outputon_web(agent_delivered)
+{
+    let s=`<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Agent_id</th>
+        <th scope="col">Id delivered</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+     
+    `;
+    let n=agent_delivered.length;
+    for(let i=0;i<n;i++)
+    {
+        let temp=``;
+        for(let j=0;j<agent_delivered[i].length;j++)
+        {
+            if(j!=0)
+            {
+                temp+=`,${agent_delivered[i][j]}`;
+            }
+            else
+            temp+=`${agent_delivered[i][j]}`;
+        }
+        
+    
+        s+=`<tr>
+        <th scope="row">${i+1}</th>
+        
+        <td>${temp}</td>
+
+      </tr>`;
+    
+    }
+    s+=`</tbody>
+    </table>`;
+
+   let p= document.getElementById('output1');
+   p.innerHTML=s;
+
+
+}
 function distance(x_source,y_source,x_d,y_d)
 {
     let dist=(x_source-x_d)*(x_source-x_d)+(y_source-y_d)*(y_source-y_d);
@@ -139,6 +183,7 @@ function solution(data)
         agent_current_location[obj.agent_id].time=obj.d;
         count++;// increment the count 
     }
+    Outputon_web(agent_delivered);
     
 
 
